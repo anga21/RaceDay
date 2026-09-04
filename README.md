@@ -1,7 +1,7 @@
 # RaceDay
 Web based event management system for South Arican road running ,walking and cycling community .Designed to manage events ,track personal performance history and prepare race day .
 
-*PART 1 - SYSTEM LANNING AND DATABASE 
+*PART 1 - SYSTEM PLANNING AND DATABASE 
 
 The system way planned and documented before any application code was written 
 
