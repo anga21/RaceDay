@@ -29,3 +29,6 @@ RaceDay /
 - API Endpoint  — a full table of planned endpoints covering Authentication, User Profile, Events, Categories, Event Enrolments and Results
   
 - SQL Script— creates the full database schema in SQL Server (SSMS), matching the ERD exactly and seeds it with sample Organisers, Participants, Events, Categories and Enrolments 
+
+# YouTube VIDEO PRESENTATION #
+https://youtu.be/nJDxrmpHsGQ
