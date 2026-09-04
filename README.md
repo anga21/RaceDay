@@ -18,8 +18,8 @@ The system supports two distinct user roles
 RaceDay /
     README .md 
     docs/
-        RaceDay API ENDPOINT.pdf 
-        RaceDay ERD .pdf
+        RaceDay API ENDPOINT.pdf/ 
+        RaceDay ERD .pdf/
         RaceDay_Schema.sql 
 
 
