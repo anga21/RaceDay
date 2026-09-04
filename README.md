@@ -23,7 +23,7 @@ RaceDay /
         RaceDay_Schema.sql 
 
 
-
+#what's in/doc 
 - ERD — six  entities (User, Event, Category, Participant_Event, Route, Weather_Forecast) ,
   
 - API Endpoint  — a full table of planned endpoints covering Authentication, User Profile, Events, Categories, Event Enrolments and Results
