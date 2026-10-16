@@ -60,10 +60,10 @@ Organiser-only endpoints return `403 Forbidden` to Participants, and Participant
 ```
 RaceDay/
 ├── README.md
-├── docs/                      # Part 1: ERD, endpoint plan, SQL script
+├── docs/                      
 └── Part2/
-    ├── README.md              # this file
-    ├── RaceDay.Api/           # the Web API project
+    ├── README.md              
+    ├── RaceDay.Api/           
     │   ├── Controllers/
 categories , Enrolment, Results, Routes, Weather
     │   ├── Models/            
