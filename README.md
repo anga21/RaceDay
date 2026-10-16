@@ -76,23 +76,16 @@ categories , Enrolment, Results, Routes, Weather
 ```
 ### Steps
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/anga21/RaceDay.git
-   cd RaceDay/Part2
-   ```
-2. Open `RaceDay.Api` in Visual Studio.
-3. Check the connection string in `appsettings.json` and change it if your SQL Server instance is different:
-   ```json
-   "ConnectionStrings": {
-     "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=RaceDay;Trusted_Connection=True;TrustServerCertificate=True"
-   }
-   ```
-4. Create the database from the EF Core migrations. In the Package Manager Console:
-   ```
-   Update-Database
-   ```
-5. Run the API with **F5**. Swagger UI opens in the browser at `swagger`.
+1.	Clone the repository and open the solution in Visual Studio
+
+2.	Open RaceDay.2 appsettings.json and check the connection string. Change it only if your SQL Server instance is different
+3.	Open Tools, then NuGet Package Manager, then Package Manager Console. Set the Default project to RaceDay.2API and run the command below. It creates the RaceDay_Part2 database from the EF Core migrations:
+Update-Database
+
+4.	Run the API with the green run button. Swagger UI opens in the browser at /swagger.
+5.	The database starts empty. Register accounts through Swagger: anyone can register as a Participant, and an Organiser needs the organiser code RACEDAY-ORG-2026 ,set as OrganiserRegistrationCode in appsettings.json.
+6.	Log in with POST /api/auth/login. Swagger keeps the session cookie, so the protected endpoints work straight away. Log out before switching accounts.
+
 
 ## Unit Tests
 
