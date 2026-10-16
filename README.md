@@ -96,4 +96,6 @@ Tests cover both success and failure scenarios for:
 - Role enforcement, where the wrong role is rejected
 - Event enrolments, where Participants can enrol and the enrolment is recorded correctly
 
+# YouTube VIDEO #
+https://youtu.be/5xc_kSrUqgk
 
