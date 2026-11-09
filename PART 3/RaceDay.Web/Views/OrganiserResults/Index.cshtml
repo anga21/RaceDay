@@ -1,0 +1,44 @@
+﻿@model List<RaceDay.Web.Models.OrganiserResultViewModel>
+
+<h2>Race Results</h2>
+
+<p>
+    <a asp-action="Capture"
+       class="btn btn-primary">
+        Capture Results
+    </a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No results captured.</p>
+}
+else
+{
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Position</th>
+                <th>Finish Time</th>
+                <th>Bib Number</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ParticipantName</td>
+                    <td>@item.Position</td>
+                    <td>@item.FinishTime</td>
+                    <td>@item.BibNumber</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}

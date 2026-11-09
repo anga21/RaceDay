@@ -1,0 +1,35 @@
+﻿@model List<RaceDay.Web.Models.ResultViewModel>
+
+<h2>My Results</h2>
+
+@if (!Model.Any())
+{
+    <p>No results found.</p>
+}
+else
+{
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Position</th>
+                <th>Finish Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.EventName</td>
+                    <td>@item.Position</td>
+                    <td>@item.FinishTime</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}

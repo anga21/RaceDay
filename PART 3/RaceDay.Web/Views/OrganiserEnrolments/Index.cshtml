@@ -1,0 +1,35 @@
+﻿@model List<RaceDay.Web.Models.OrganiserEnrolmentViewModel>
+
+<h2>Event Enrolments</h2>
+
+@if (!Model.Any())
+{
+    <p>No enrolments found.</p>
+}
+else
+{
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ParticipantName</td>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Status</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}

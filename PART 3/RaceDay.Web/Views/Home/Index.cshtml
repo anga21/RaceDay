@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="rd-hero text-center mb-5">
+    <h1>Find your next race</h1>
+    <p class="mb-4">Road running, walking and cycling events across South Africa, all in one place.</p>
+    <a asp-controller="Events" asp-action="Index" class="btn btn-primary btn-lg me-2">Browse events</a>
+    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-light btn-lg">Create an account</a>
+</section>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="rd-card card h-100 p-4">
+            <h2 class="h4">Discover</h2>
+            <p class="mb-0">Browse upcoming runs, walks and cycle events, and see the route, distance and weather before you decide.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="rd-card card h-100 p-4">
+            <h2 class="h4">Enter</h2>
+            <p class="mb-0">Pick your category and enter in a few clicks. Your enrolments stay in one place.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="rd-card card h-100 p-4">
+            <h2 class="h4">Track</h2>
+            <p class="mb-0">See your finish times and positions across every event you have completed.</p>
+        </div>
+    </div>
+</div>

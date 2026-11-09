@@ -1,0 +1,35 @@
+﻿@model RaceDay.Web.Models.EventViewModel
+
+<h2>Create Event</h2>
+
+<form>
+
+    <div class="mb-3">
+        <label>Event Name</label>
+        <input asp-for="EventName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Description</label>
+        <textarea asp-for="Description"
+                  class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label>Event Date</label>
+        <input asp-for="EventDate"
+               type="date"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Location</label>
+        <input asp-for="Location"
+               class="form-control" />
+    </div>
+
+    <button class="btn btn-primary">
+        Save Event
+    </button>
+
+</form>

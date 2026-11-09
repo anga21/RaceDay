@@ -1,0 +1,28 @@
+﻿@model List<RaceDay.Web.Models.EventViewModel>
+
+<h2>Upcoming Events</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventName</td>
+                <td>@item.EventDate.ToShortDateString()</td>
+                <td>@item.Location</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

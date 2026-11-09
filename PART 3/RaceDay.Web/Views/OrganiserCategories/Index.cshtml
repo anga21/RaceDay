@@ -1,0 +1,40 @@
+﻿@model List<RaceDay.Web.Models.CategoryViewModel>
+
+<h2>Categories</h2>
+
+<p>
+    <a asp-action="Create"
+       class="btn btn-primary">
+        Add Category
+    </a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No categories found.</p>
+}
+else
+{
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Description</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}

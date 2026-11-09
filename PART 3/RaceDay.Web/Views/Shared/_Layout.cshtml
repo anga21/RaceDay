@@ -1,0 +1,145 @@
+﻿@using System.Security.Claims
+@{
+    var isAuthenticated = User.Identity?.IsAuthenticated == true;
+    var isOrganiser = User.IsInRole("Organiser");
+    var isParticipant = User.IsInRole("Participant");
+    var role = User.FindFirst(ClaimTypes.Role)?.Value;
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    string Active(params string[] names) => names.Contains(controller) ? "active" : "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RaceDay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark rd-navbar">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Race<span>Day</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto">
+                        @if (isOrganiser)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @Active("Organiser")" asp-controller="Organiser" asp-action="Dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @Active("OrganiserEvents", "OrganiserCategories", "OrganiserEnrolments", "OrganiserResults")"
+                                   asp-controller="OrganiserEvents" asp-action="Index">My Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link @Active("OrganiserCategories")"
+                                   asp-controller="OrganiserCategories"
+                                   asp-action="Index">
+                                    Categories
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link @Active("OrganiserEnrolments")"
+                                   asp-controller="OrganiserEnrolments"
+                                   asp-action="Index">
+                                    Enrolments
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link @Active("OrganiserResults")"
+                                   asp-controller="OrganiserResults"
+                                   asp-action="Index">
+                                    Results
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @Active("Events")" asp-controller="Events" asp-action="Index">Events</a>
+                            </li>
+                            @if (isParticipant)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link @Active("Enrolments")" asp-controller="Enrolments" asp-action="Index">My Enrolments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link @Active("Results")" asp-controller="Results" asp-action="Index">My Results</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        @if (isAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @Active("Profile")" asp-controller="Profile" asp-action="Index">My Profile</a>
+                            </li>
+                            <li class="nav-item my-2 my-lg-0 me-lg-3">
+                                <span class="role-badge">@role</span>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="btn btn-outline-light btn-sm">Log out</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @Active("Account")" asp-controller="Account" asp-action="Login">Log in</a>
+                            </li>
+                            <li class="nav-item ms-lg-2">
+                                <a class="btn btn-primary btn-sm" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container py-4">
+        @if (TempData["Success"] is string successMessage)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @successMessage
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["Error"] is string errorMessage)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @errorMessage
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer class="rd-footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <span>&copy; 2026 RaceDay</span>
+            <span>Road running, walking and cycling events across South Africa</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
