@@ -99,3 +99,68 @@ Tests cover both success and failure scenarios for:
 # YouTube VIDEO #
 https://youtu.be/5xc_kSrUqgk
 
+*PART 3 - POE 
+
+## Features
+
+### Authentication and navigation
+- Register and log in through the MVC app, which communicates with the Part 2 API.
+- Authenticated state and role are kept across pages (server-side session plus cookie authentication).
+- Distinct navigation for each role; protected pages redirect unauthenticated users to the login page.
+- Users who access a page they are not allowed to see are shown an Access Denied page.
+- Log out ends the session and redirects to the login page.
+
+### Organiser
+- **Dashboard:** summary of the organiser's events, total enrolments per event and upcoming event dates.
+- **My Events:** create, edit and delete events (name, description, date, location, distance and event type), with an event banner image upload.
+- **Categories:** add age or distance categories to each event.
+- **Enrolments:** view all participants enrolled in an event, with their category and enrolment status.
+- **Results entry:** capture and publish finish times and finishing positions after an event concludes.
+
+### Participant
+- **Home:** upcoming events with filtering options.
+- **Event details:** full event information, categories, routes and weather forecast.
+- **Enrol:** enrol in an event and choose a category; the enrolment is recorded immediately.
+- **My Enrolments:** personal list of enrolled events with colour-coded status (green = Confirmed, amber = Pending).
+- **My Results:** personal race history showing event name, date, category, finish time and position (for example, 47th out of 312 finishers).
+- **Profile:** view and update personal information and upload a profile picture.
+
+### UI and quality
+- Sporty RaceDay theme (navy and orange) with consistent fonts, colours and spacing across all pages.
+- Responsive layout built with Bootstrap; the menu collapses on small screens.
+- Friendly error handling: invalid input and API failures are shown as clear messages, never raw errors.
+- The MVC project contains **no database access and no duplicated business logic**; all data operations go through the API.
+
+---
+
+## Tech Stack
+
+| Area | Technology |
+|---|---|
+| Web front end | ASP.NET Core MVC (.NET) |
+| API | RaceDay.2API (ASP.NET Core Web API, Part 2) |
+| Styling | Bootstrap, custom CSS, Google Fonts (Barlow Condensed, Inter) |
+| Authentication | Cookie authentication and server-side session; API login |
+| File storage | Azure Blob Storage (through the API) |
+| Containers | Docker |
+| CI/CD | GitHub Actions |
+
+---
+
+## Project Structure
+
+```
+/
+├── RaceDay.2API/          # Part 2 – REST API (with Azure Blob Storage added in Part 3)
+├── RaceDay.Web/           # Part 3 – ASP.NET Core MVC application
+│   ├── Controllers/
+│   ├── Models/
+│   ├── Services/          # API client used for all API calls
+│   ├── Views/
+│   ├── wwwroot/
+│   └── Dockerfile
+├── .github/workflows/     # GitHub Actions workflow
+└── README.md
+```
+
+>
